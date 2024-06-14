@@ -5,3 +5,8 @@ variable "availability_zones" {
         "us-east-1c"
     ]
 }
+
+
+variable "cluster_name" {
+    default = "hibicode_subnet_group"
+}
