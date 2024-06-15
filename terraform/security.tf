@@ -23,3 +23,17 @@ resource "aws_security_group" "database" {
         self = true
     }
 }
+
+
+# ansible will be able to access internet to pull docker image to install in the ec2 instances
+resource "aws_security_group" "allow_outbound" {
+  vpc_id = "${aws_vpc.main.id}"
+  name = "hibicode_allow_outbound"
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
