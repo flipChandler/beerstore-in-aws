@@ -8,8 +8,8 @@
     - name: Install Docker
       yum: name=docker
 
-    - name:
+    - name: Ensure Docker service is started and enabled
       service:
         name: docker 
         state: started
-        enable: yes
+        enabled: yes
