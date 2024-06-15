@@ -30,6 +30,8 @@ data "template_file" "hosts" {
         PUBLIC_IP_0 = "${aws_instance.instances.*.public_ip[0]}"
         PUBLIC_IP_1 = "${aws_instance.instances.*.public_ip[1]}"
         PUBLIC_IP_2 = "${aws_instance.instances.*.public_ip[2]}"
+
+        PRIVATE_IP_0 = "${aws_instance.instances.*.private_ip[0]}"
     }
 }
 
