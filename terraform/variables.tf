@@ -10,3 +10,5 @@ variable "availability_zones" {
 variable "cluster_name" {
     default = "hibicode_subnet_group"
 }
+
+variable "my_public_ip" {}
