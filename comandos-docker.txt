@@ -1,5 +1,5 @@
 sudo docker service create --name beerstore -e SPRING_DATASOURCE_URL=jdbc:postgresql://hibicode-beerstore-rds.chy6ke26akam.us-east-1.rds.amazonaws.com:5432/beerstoredb -e SPRING_DATASOURCE_USERNAME=felipeadmin -e SPRING_DATASOURCE_PASSWORD=root1234 -p 8080:8080 flipchandler/beerstore:0.3
 
-sudo docker run -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://hibicode-beerstore-rds.chy6ke26akam.us-east-1.rds.amazonaws.com:5432/beerstoredb -e SPRING_DATASOURCE_USERNAME=felipeadmin -e SPRING_DATASOURCE_PASSWORD=root1234 flipchandler/beerstore:0.3
+sudo docker run -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://hibicode-beerstore-rds.chy6ke26akam.us-east-1.rds.amazonaws.com:5432/beerstoredb -e SPRING_DATASOURCE_USERNAME={USERNAME} -e SPRING_DATASOURCE_PASSWORD={PASSWORD} flipchandler/beerstore:0.3
 
-sudo docker run -p 8080:8080 flipchandler/beerstore:0.4
+sudo docker run -p 8080:8080 flipchandler/beerstore:0.4 --name beerstore
