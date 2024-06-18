@@ -44,7 +44,7 @@
       register: overlay_network_created
 
     - name: Create service overlay network 
-      command: docker network create --driver overlay --subnet 10.0.0.0/16 service
+      command: docker network create --driver overlay --subnet 10.0.0.0/16 --attachable service
       when: overlay_network_created.stdout == "0"
 
     - shell: "docker service ls | grep -i portainer | wc -l"

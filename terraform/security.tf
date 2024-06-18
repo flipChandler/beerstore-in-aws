@@ -15,8 +15,10 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_security_group" "database" {
     vpc_id = "${aws_vpc.main.id}"
     name = "hibicode_database"
+    description = "enable postgres rds access on port 5432"
 
     ingress {
+        description = "postgres rds access"
         from_port = 5432
         to_port = 5432
         protocol = "tcp"
@@ -83,4 +85,13 @@ resource "aws_security_group" "allow_portainer" {
         protocol = "tcp"
         cidr_blocks = ["${var.my_public_ip}"]
     }
+
+    ingress {
+    from_port = 8080
+    to_port = 8080
+    protocol = "tcp"
+    cidr_blocks = [
+      for subnet in aws_subnet.public_subnet : subnet.cidr_block
+    ]
+  }
 }

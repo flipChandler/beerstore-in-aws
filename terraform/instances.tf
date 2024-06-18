@@ -16,7 +16,8 @@ resource "aws_instance" "instances" {
         "${aws_security_group.allow_ssh.id}", 
         "${aws_security_group.allow_outbound.id}",
         "${aws_security_group.cluster_comunication.id}",
-        "${aws_security_group.allow_portainer.id}"
+        "${aws_security_group.allow_portainer.id}",
+        "${aws_security_group.database.id}",
         ]
 
     tags = {

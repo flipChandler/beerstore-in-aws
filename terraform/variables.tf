@@ -7,7 +7,7 @@ variable "availability_zones" {
 }
 
 
-variable "cluster_name" {
+variable "subnet_group_name" {
     default = "hibicode_subnet_group"
 }
 

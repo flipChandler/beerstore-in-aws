@@ -33,11 +33,13 @@ ext['lombok.version'] = '1.18.0'
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.google.code.gson:gson'
+	implementation 'software.amazon.awssdk:secretsmanager:2.26.3'
 	compileOnly 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtime 'org.postgresql:postgresql'
+	runtime 'org.postgresql:postgresql:42.5.0'
 	
 	testImplementation 'org.hamcrest:hamcrest-all:1.3'
 	testImplementation 'org.mockito:mockito-core:2.+'
