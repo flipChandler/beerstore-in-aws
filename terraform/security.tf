@@ -75,10 +75,11 @@ resource "aws_security_group" "cluster_comunication" {
     }
 }
 
-resource "aws_security_group" "allow_portainer" {
+resource "aws_security_group" "allow_app" {
     vpc_id = "${aws_vpc.main.id}"
-    name = "hibicode_allow_portainer"
+    name = "hibicode_allow_app"
 
+    // access portainer interface only from my IP
     ingress {
         from_port = 9000
         to_port = 9000
@@ -94,4 +95,27 @@ resource "aws_security_group" "allow_portainer" {
       for subnet in aws_subnet.public_subnet : subnet.cidr_block
     ]
   }
+}
+
+resource "aws_security_group" "allow_load_balancer" {
+    vpc_id = "${aws_vpc.main.id}"
+    name = "hibicode_allow_load_balancer"
+
+    //all IP's are allowed to make request
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    // requests go out from this lb only for ec2 instances in the port 8080 (spring application)
+    egress {
+        from_port = 8080
+        to_port = 8080
+        protocol = "tcp"
+        cidr_blocks = [
+            for subnet in aws_subnet.public_subnet : subnet.cidr_block
+        ]
+    }
 }

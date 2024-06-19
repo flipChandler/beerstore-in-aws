@@ -1,0 +1,6 @@
+[manager-leader]
+54.80.67.28 private_ip=192.168.20.35
+
+[manager-follower]
+3.219.215.182
+3.92.189.188
